@@ -1,0 +1,37 @@
+# Project: assignment1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o acllib.o model.o view.o
+LINKOBJ  = main.o acllib.o model.o view.o
+LIBS     = -L"D:/ProgramFile/Dev-Cpp/MinGW64/lib" -L"D:/ProgramFile/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -mwindows D:/ProgramFile/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib/libwinmm.a  D:/ProgramFile/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib/libmsimg32.a  D:/ProgramFile/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib/libkernel32.a  D:/ProgramFile/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib/libuser32.a  D:/ProgramFile/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib/libgdi32.a  D:/ProgramFile/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib/libole32.a  D:/ProgramFile/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib/liboleaut32.a  D:/ProgramFile/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib/libuuid.a -g3
+INCS     = -I"D:/ProgramFile/Dev-Cpp/MinGW64/include" -I"D:/ProgramFile/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/ProgramFile/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/ProgramFile/Dev-Cpp/MinGW64/include" -I"D:/ProgramFile/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/ProgramFile/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/ProgramFile/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = assignment1.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+acllib.o: acllib.c
+	$(CC) -c acllib.c -o acllib.o $(CFLAGS)
+
+model.o: model.c
+	$(CC) -c model.c -o model.o $(CFLAGS)
+
+view.o: view.c
+	$(CC) -c view.c -o view.o $(CFLAGS)
